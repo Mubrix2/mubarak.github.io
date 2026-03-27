@@ -9,22 +9,22 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --ink: #0e0e0e;
-  --paper: #f5f2eb;
-  --cream: #ede9df;
-  --warm: #e8e0ce;
-  --gold: #c4882a;
-  --gold-light: #e8a93a;
-  --muted: #7a7060;
-  --border: #d8d0be;
-  --white: #fdfbf7;
+  --bg:         #0d0d0d;
+  --surface:    #161616;
+  --surface2:   #1f1f1f;
+  --surface3:   #272727;
+  --gold:       #d4963a;
+  --gold-light: #f0b14a;
+  --text:       #f0ede8;
+  --muted:      #888078;
+  --border:     #2a2a2a;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
   font-family: 'Instrument Sans', sans-serif;
   font-weight: 400;
   line-height: 1.6;
@@ -37,8 +37,9 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 200;
   padding: 0 5%;
-  background: rgba(245,242,235,0.92);
-  backdrop-filter: blur(16px);
+  background: rgba(13,13,13,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -48,21 +49,21 @@ nav {
 
 .logo {
   font-family: 'Fraunces', serif;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text);
   text-decoration: none;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
-
 .logo span { color: var(--gold); }
 
 .nav-links {
   display: flex;
   gap: 32px;
   list-style: none;
+  align-items: center;
 }
-
 .nav-links a {
   font-size: 0.82rem;
   color: var(--muted);
@@ -71,21 +72,18 @@ nav {
   text-transform: uppercase;
   transition: color 0.2s;
 }
-
-.nav-links a:hover { color: var(--ink); }
-
+.nav-links a:hover { color: var(--text); }
 .nav-hire {
-  background: var(--ink);
-  color: var(--paper) !important;
-  padding: 8px 20px;
+  background: var(--gold) !important;
+  color: #0d0d0d !important;
+  padding: 8px 20px !important;
   border-radius: 4px;
-  font-size: 0.82rem !important;
+  font-weight: 600 !important;
   text-transform: none !important;
   letter-spacing: 0 !important;
   transition: background 0.2s !important;
 }
-
-.nav-hire:hover { background: var(--gold) !important; color: white !important; }
+.nav-hire:hover { background: var(--gold-light) !important; }
 
 .hamburger {
   display: none;
@@ -94,14 +92,12 @@ nav {
   cursor: pointer;
   background: none;
   border: none;
-  padding: 4px;
+  padding: 6px;
 }
-
 .hamburger span {
   display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--ink);
+  width: 24px; height: 2px;
+  background: var(--text);
   border-radius: 2px;
   transition: all 0.3s;
 }
@@ -110,23 +106,23 @@ nav {
   display: none;
   position: fixed;
   top: 64px; left: 0; right: 0;
-  background: var(--white);
+  background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 24px 5%;
+  padding: 16px 5%;
   z-index: 199;
   flex-direction: column;
-  gap: 20px;
 }
-
 .mobile-menu.open { display: flex; }
-
 .mobile-menu a {
-  color: var(--ink);
+  color: var(--text);
   text-decoration: none;
-  font-size: 1rem;
-  padding: 8px 0;
+  font-size: 0.95rem;
+  padding: 13px 0;
   border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
 }
+.mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 600; }
+.mobile-menu a:hover { color: var(--gold); }
 
 /* ── HERO ── */
 .hero {
@@ -139,13 +135,12 @@ nav {
   position: relative;
   overflow: hidden;
 }
-
 .hero::before {
   content: '';
   position: absolute;
-  top: -100px; right: -200px;
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(196,136,42,0.08) 0%, transparent 65%);
+  top: -80px; right: -150px;
+  width: 650px; height: 650px;
+  background: radial-gradient(circle, rgba(212,150,58,0.1) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -157,13 +152,12 @@ nav {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
-  border: 1px solid rgba(196,136,42,0.3);
-  background: rgba(196,136,42,0.06);
+  border: 1px solid rgba(212,150,58,0.3);
+  background: rgba(212,150,58,0.08);
   padding: 6px 14px;
   border-radius: 100px;
   margin-bottom: 28px;
 }
-
 .hero-tag::before {
   content: '';
   width: 6px; height: 6px;
@@ -171,7 +165,6 @@ nav {
   border-radius: 50%;
   animation: blink 2s infinite;
 }
-
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
@@ -179,19 +172,18 @@ nav {
 
 .hero h1 {
   font-family: 'Fraunces', serif;
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-size: clamp(2.3rem, 4.5vw, 4rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
+  color: var(--text);
 }
-
 .hero h1 em {
   font-style: italic;
   font-weight: 300;
   color: var(--gold);
 }
-
 .hero-desc {
   font-size: 1rem;
   color: var(--muted);
@@ -199,7 +191,6 @@ nav {
   max-width: 480px;
   margin-bottom: 40px;
 }
-
 .hero-actions {
   display: flex;
   gap: 12px;
@@ -219,30 +210,27 @@ nav {
   cursor: pointer;
   border: none;
   transition: all 0.2s;
+  white-space: nowrap;
 }
+.btn-dark { background: var(--gold); color: #0d0d0d; font-weight: 600; }
+.btn-dark:hover { background: var(--gold-light); }
+.btn-light { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-light:hover { border-color: var(--gold); color: var(--gold); }
 
-.btn-dark { background: var(--ink); color: var(--paper); }
-.btn-dark:hover { background: var(--gold); }
-.btn-light { background: transparent; color: var(--ink); border: 1px solid var(--border); }
-.btn-light:hover { border-color: var(--ink); }
-
-/* Hero Right — Stats card */
 .hero-card {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+  padding: 36px;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.4);
 }
-
 .hero-card-label {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -251,44 +239,39 @@ nav {
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
-
 .stat-box {
-  background: var(--white);
-  padding: 22px 20px;
+  background: var(--surface2);
+  padding: 20px 16px;
   text-align: center;
 }
-
 .stat-n {
   font-family: 'Fraunces', serif;
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: var(--gold);
   line-height: 1;
   display: block;
   margin-bottom: 4px;
 }
-
 .stat-l {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-
 .avail-badge {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(196,136,42,0.07);
-  border: 1px solid rgba(196,136,42,0.2);
+  background: rgba(212,150,58,0.08);
+  border: 1px solid rgba(212,150,58,0.2);
   border-radius: 8px;
-  padding: 14px 18px;
-  font-size: 0.83rem;
-  color: var(--ink);
+  padding: 14px 16px;
+  font-size: 0.82rem;
+  color: var(--text);
 }
-
 .avail-dot {
   width: 8px; height: 8px;
   background: #22c55e;
@@ -297,15 +280,13 @@ nav {
   box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
   animation: pulse-green 2s infinite;
 }
-
 @keyframes pulse-green {
   0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
-  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.1); }
+  50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); }
 }
 
-/* ── SECTION SHARED ── */
+/* ── SHARED SECTION ── */
 section { padding: 90px 5%; }
-
 .section-eyebrow {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
@@ -314,384 +295,267 @@ section { padding: 90px 5%; }
   font-weight: 600;
   margin-bottom: 12px;
 }
-
 h2 {
   font-family: 'Fraunces', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.15;
   margin-bottom: 14px;
+  color: var(--text);
 }
-
 .section-sub {
   color: var(--muted);
   font-size: 0.95rem;
   max-width: 520px;
-  margin-bottom: 56px;
+  margin-bottom: 52px;
   line-height: 1.7;
 }
 
 /* ── TOOLS ── */
-.tools-section { background: var(--white); }
-
+.tools-section { background: var(--surface); }
 .tools-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
 }
-
 .tool-group-title {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   font-weight: 600;
 }
-
-.tool-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
+.tool-list { display: flex; flex-wrap: wrap; gap: 9px; }
 .tool-chip {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: var(--paper);
+  background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 0.82rem;
-  color: var(--ink);
+  padding: 8px 13px;
+  font-size: 0.81rem;
+  color: var(--text);
   font-weight: 500;
   transition: all 0.2s;
 }
-
-.tool-chip:hover {
-  border-color: var(--gold);
-  background: rgba(196,136,42,0.05);
-}
-
-.tool-chip .icon { font-size: 0.95rem; }
+.tool-chip:hover { border-color: var(--gold); background: rgba(212,150,58,0.08); color: var(--gold); }
+.tool-chip .icon { font-size: 0.9rem; }
 
 /* ── PROJECTS ── */
-.projects-section { background: var(--cream); }
-
-.projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
+.projects-section { background: var(--bg); }
+.projects-list { display: flex; flex-direction: column; gap: 16px; }
 .project-card {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
-  transition: box-shadow 0.3s, transform 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
 }
-
 .project-card:hover {
-  box-shadow: 0 12px 48px rgba(0,0,0,0.09);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5);
   transform: translateY(-3px);
+  border-color: rgba(212,150,58,0.3);
 }
-
 .project-inner {
-  padding: 36px 40px;
+  padding: 32px 36px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 32px;
   align-items: start;
 }
-
-.project-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.proj-num {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  text-transform: uppercase;
-}
-
+.project-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.proj-num { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
 .proj-category {
-  font-size: 0.7rem;
-  background: rgba(196,136,42,0.1);
+  font-size: 0.69rem;
+  background: rgba(212,150,58,0.1);
   color: var(--gold);
-  border: 1px solid rgba(196,136,42,0.2);
+  border: 1px solid rgba(212,150,58,0.25);
   padding: 3px 10px;
   border-radius: 100px;
   font-weight: 500;
 }
-
 .project-title {
   font-family: 'Fraunces', serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.015em;
   margin-bottom: 10px;
   line-height: 1.3;
+  color: var(--text);
 }
-
-.project-problem {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 14px;
-  line-height: 1.65;
-}
-
+.project-problem { font-size: 0.84rem; color: var(--muted); margin-bottom: 12px; line-height: 1.65; }
 .project-solution {
-  font-size: 0.88rem;
-  color: var(--ink);
+  font-size: 0.87rem;
+  color: var(--text);
   line-height: 1.7;
   padding-left: 14px;
   border-left: 2px solid var(--gold);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
-
-.project-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
+.project-chips { display: flex; flex-wrap: wrap; gap: 7px; }
 .chip {
-  font-size: 0.72rem;
-  background: var(--cream);
+  font-size: 0.71rem;
+  background: var(--surface2);
   border: 1px solid var(--border);
   color: var(--muted);
   padding: 4px 10px;
   border-radius: 4px;
   font-weight: 500;
 }
-
-.project-impact {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 130px;
-  text-align: center;
-}
-
-.impact-item { padding: 18px 16px; background: var(--cream); border-radius: 10px; border: 1px solid var(--border); }
-
+.project-impact { display: flex; flex-direction: column; gap: 12px; min-width: 120px; text-align: center; }
+.impact-item { padding: 16px 14px; background: var(--surface2); border-radius: 10px; border: 1px solid var(--border); }
 .impact-val {
   font-family: 'Fraunces', serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--gold);
   display: block;
   line-height: 1;
   margin-bottom: 4px;
 }
-
-.impact-key {
-  font-size: 0.66rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
+.impact-key { font-size: 0.64rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
 /* ── PROCESS ── */
-.process-section { background: var(--white); }
-
+.process-section { background: var(--surface); }
 .process-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
 }
-
 .process-step {
-  padding: 36px 28px;
+  padding: 34px 26px;
   border-right: 1px solid var(--border);
-  position: relative;
+  background: var(--surface);
+  transition: background 0.2s;
 }
-
 .process-step:last-child { border-right: none; }
-
+.process-step:hover { background: var(--surface2); }
 .step-num {
   font-family: 'Fraunces', serif;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: var(--border);
+  color: var(--surface3);
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
-
-.step-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-
-.step-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+.step-title { font-family: 'Fraunces', serif; font-size: 0.98rem; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+.step-desc { font-size: 0.81rem; color: var(--muted); line-height: 1.65; }
 
 /* ── CONTACT ── */
 .contact-section {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--surface);
   text-align: center;
   padding: 100px 5%;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid var(--border);
 }
-
 .contact-section::before {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 600px; height: 400px;
-  background: radial-gradient(ellipse, rgba(196,136,42,0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(212,150,58,0.1) 0%, transparent 70%);
   pointer-events: none;
 }
-
 .contact-section .section-eyebrow { color: var(--gold-light); }
-
-.contact-section h2 { color: var(--paper); margin-bottom: 14px; }
-
-.contact-section p {
-  color: rgba(245,242,235,0.6);
-  font-size: 1rem;
-  margin-bottom: 44px;
-  line-height: 1.7;
-}
-
-.contact-buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 60px;
-}
-
-.btn-gold { background: var(--gold); color: white; }
+.contact-section h2 { color: var(--text); margin-bottom: 14px; }
+.contact-section > div > p { color: var(--muted); font-size: 1rem; margin-bottom: 44px; line-height: 1.7; }
+.contact-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-gold { background: var(--gold); color: #0d0d0d; font-weight: 600; }
 .btn-gold:hover { background: var(--gold-light); }
-.btn-ghost { background: transparent; color: var(--paper); border: 1px solid rgba(245,242,235,0.2); }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-
-.contact-info {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.contact-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-items: center;
-}
-
-.contact-item-label {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(245,242,235,0.4);
-}
-
-.contact-item-val {
-  font-size: 0.9rem;
-  color: var(--paper);
-  text-decoration: none;
-}
-
+.contact-info { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.contact-item { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.contact-item-label { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.contact-item-val { font-size: 0.88rem; color: var(--text); text-decoration: none; }
 .contact-item-val:hover { color: var(--gold-light); }
 
 /* ── FOOTER ── */
 footer {
   background: #080808;
-  padding: 28px 5%;
+  padding: 26px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+  border-top: 1px solid #1a1a1a;
 }
-
-footer p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+footer p { font-size: 0.77rem; color: rgba(255,255,255,0.25); }
 footer span { color: var(--gold); }
 
-/* ── SCROLL ANIMATIONS ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════
+   RESPONSIVE
+══════════════════ */
+@media (max-width: 1024px) {
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-step { border-bottom: 1px solid var(--border); }
+  .process-step:nth-child(2) { border-right: none; }
+  .process-step:nth-child(3) { border-bottom: none; }
+  .process-step:nth-child(4) { border-right: none; border-bottom: none; }
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── MOBILE ── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
 
   .hero {
     grid-template-columns: 1fr;
-    padding-top: 100px;
-    gap: 40px;
-    min-height: auto;
+    padding-top: 96px;
     padding-bottom: 60px;
+    gap: 36px;
+    min-height: auto;
   }
-
   .hero::before { display: none; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
+  .hero-card { padding: 26px 22px; }
 
-  .hero h1 { font-size: 2.4rem; }
-
-  .hero-card { padding: 28px 24px; }
-
-  .tools-columns { grid-template-columns: 1fr; gap: 28px; }
+  .tools-columns { grid-template-columns: 1fr; gap: 24px; }
 
   .project-inner {
     grid-template-columns: 1fr;
-    padding: 28px 24px;
-    gap: 24px;
+    padding: 24px 22px;
+    gap: 20px;
   }
-
-  .project-impact {
-    flex-direction: row;
-    min-width: auto;
-  }
-
+  .project-impact { flex-direction: row; min-width: auto; }
   .impact-item { flex: 1; }
 
-  .process-steps { grid-template-columns: 1fr 1fr; }
-
-  .process-step { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .process-step:nth-child(2) { border-right: none; }
-  .process-step:nth-child(3) { border-bottom: none; }
-  .process-step:nth-child(4) { border-right: none; border-bottom: none; }
-
-  .contact-info { gap: 24px; }
-
-  footer { justify-content: center; text-align: center; }
-
-  section { padding: 70px 5%; }
-}
-
-@media (max-width: 480px) {
-  .hero h1 { font-size: 2rem; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: 1fr; }
   .process-step { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
   .process-step:last-child { border-bottom: none !important; }
+
+  .contact-buttons { flex-direction: column; align-items: center; }
+  .contact-buttons .btn { width: 100%; max-width: 320px; justify-content: center; }
+  .contact-info { gap: 20px; }
+
+  section { padding: 64px 5%; }
+  footer { justify-content: center; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0 4%; }
+  .logo { font-size: 0.95rem; }
+  .hero { padding-left: 4%; padding-right: 4%; }
+  section { padding: 56px 4%; }
+  .hero h1 { font-size: 1.85rem; }
+  .project-inner { padding: 20px 18px; }
+  .project-title { font-size: 1.05rem; }
+  .project-impact { flex-direction: column; }
+  .impact-item { flex: none; }
+  .contact-info { flex-direction: column; gap: 16px; }
+  footer { padding: 22px 4%; }
 }
 </style>
 </head>
@@ -735,22 +599,10 @@ footer span { color: var(--gold); }
   <div class="hero-card reveal">
     <div class="hero-card-label">By the numbers</div>
     <div class="stats-grid">
-      <div class="stat-box">
-        <span class="stat-n">5+</span>
-        <span class="stat-l">Projects Built</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-n">80%</span>
-        <span class="stat-l">Avg Time Saved</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-n">0</span>
-        <span class="stat-l">Code for Client</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-n">10+</span>
-        <span class="stat-l">Tools Mastered</span>
-      </div>
+      <div class="stat-box"><span class="stat-n">5+</span><span class="stat-l">Projects Built</span></div>
+      <div class="stat-box"><span class="stat-n">80%</span><span class="stat-l">Avg Time Saved</span></div>
+      <div class="stat-box"><span class="stat-n">0</span><span class="stat-l">Code for Client</span></div>
+      <div class="stat-box"><span class="stat-n">10+</span><span class="stat-l">Tools Mastered</span></div>
     </div>
     <div class="avail-badge">
       <span class="avail-dot"></span>
@@ -764,32 +616,25 @@ footer span { color: var(--gold); }
   <div class="section-eyebrow">Skills & Stack</div>
   <h2>Tools I work with</h2>
   <p class="section-sub">Every tool in my stack is something I actively use in client projects — not just familiar with.</p>
-
   <div class="tools-columns">
     <div>
       <div class="tool-group-title">Automation & Integration</div>
       <div class="tool-list">
         <div class="tool-chip"><span class="icon">⚙️</span> n8n</div>
-        <!-- <div class="tool-chip"><span class="icon">🔗</span> Zapier</div>
-        <div class="tool-chip"><span class="icon">🔁</span> Make (Integromat)</div> -->
-        <!-- <div class="tool-chip"><span class="icon">⚡</span> Power Automate</div>
-      </div> -->
-
-      <div class="tool-group-title" style="margin-top:28px;">AI & APIs</div>
+      </div>
+      <div class="tool-group-title" style="margin-top:26px;">AI & APIs</div>
       <div class="tool-list">
         <div class="tool-chip"><span class="icon">🤖</span> Google Gemini API</div>
         <div class="tool-chip"><span class="icon">🧠</span> OpenAI API</div>
         <div class="tool-chip"><span class="icon">🌐</span> REST APIs</div>
         <div class="tool-chip"><span class="icon">🪝</span> Webhooks</div>
       </div>
-
-      <div class="tool-group-title" style="margin-top:28px;">CRM & Sales</div>
+      <div class="tool-group-title" style="margin-top:26px;">CRM & Sales</div>
       <div class="tool-list">
         <div class="tool-chip"><span class="icon">🟠</span> HubSpot CRM</div>
         <div class="tool-chip"><span class="icon">📊</span> Airtable</div>
       </div>
     </div>
-
     <div>
       <div class="tool-group-title">Productivity & Data</div>
       <div class="tool-list">
@@ -798,16 +643,14 @@ footer span { color: var(--gold); }
         <div class="tool-chip"><span class="icon">📁</span> Google Drive API</div>
         <div class="tool-chip"><span class="icon">📝</span> Google Docs API</div>
       </div>
-
-      <div class="tool-group-title" style="margin-top:28px;">Communication</div>
+      <div class="tool-group-title" style="margin-top:26px;">Communication</div>
       <div class="tool-list">
         <div class="tool-chip"><span class="icon">📧</span> Gmail API</div>
         <div class="tool-chip"><span class="icon">💬</span> Slack</div>
         <div class="tool-chip"><span class="icon">📱</span> WhatsApp (WATI)</div>
         <div class="tool-chip"><span class="icon">📬</span> SMTP / Email</div>
       </div>
-
-      <div class="tool-group-title" style="margin-top:28px;">Forms & Capture</div>
+      <div class="tool-group-title" style="margin-top:26px;">Forms & Capture</div>
       <div class="tool-list">
         <div class="tool-chip"><span class="icon">📝</span> Tally</div>
         <div class="tool-chip"><span class="icon">📋</span> Typeform</div>
@@ -822,27 +665,17 @@ footer span { color: var(--gold); }
   <div class="section-eyebrow">Case Studies</div>
   <h2>Projects I've built</h2>
   <p class="section-sub">Real business problems solved with AI-powered automation workflows.</p>
-
   <div class="projects-list">
 
-    <!-- Project 1 -->
     <div class="project-card reveal">
       <div class="project-inner">
         <div>
-          <div class="project-meta">
-            <span class="proj-num">01</span>
-            <span class="proj-category">Lead Generation</span>
-          </div>
+          <div class="project-meta"><span class="proj-num">01</span><span class="proj-category">Lead Generation</span></div>
           <div class="project-title">AI-Powered Lead Qualification & CRM Pipeline</div>
           <p class="project-problem">A digital marketing agency was manually reviewing 200+ weekly inbound leads — 12+ hours lost on data entry, scoring, and follow-ups, causing slow responses and lost deals.</p>
           <p class="project-solution">Built an n8n workflow that captures leads via Tally, uses Gemini AI to score and classify intent, auto-creates HubSpot contacts and deals, assigns to the right rep, and sends a personalised follow-up — all within 3 minutes of submission.</p>
           <div class="project-chips">
-            <span class="chip">n8n</span>
-            <span class="chip">HubSpot CRM</span>
-            <span class="chip">Gemini API</span>
-            <span class="chip">Tally</span>
-            <span class="chip">Gmail</span>
-            <span class="chip">Slack</span>
+            <span class="chip">n8n</span><span class="chip">HubSpot CRM</span><span class="chip">Gemini API</span><span class="chip">Tally</span><span class="chip">Gmail</span><span class="chip">Slack</span>
           </div>
         </div>
         <div class="project-impact">
@@ -853,23 +686,15 @@ footer span { color: var(--gold); }
       </div>
     </div>
 
-    <!-- Project 2 -->
     <div class="project-card reveal">
       <div class="project-inner">
         <div>
-          <div class="project-meta">
-            <span class="proj-num">02</span>
-            <span class="proj-category">Client Operations</span>
-          </div>
+          <div class="project-meta"><span class="proj-num">02</span><span class="proj-category">Client Operations</span></div>
           <div class="project-title">Automated Client Onboarding System</div>
           <p class="project-problem">A consulting firm spent 3–4 days manually onboarding new clients — sending contracts, collecting documents, setting up folders, and scheduling kickoff calls, with steps regularly missed.</p>
           <p class="project-solution">Designed a workflow triggered on "Deal Won" in HubSpot that auto-sends contracts, creates a Google Drive folder, shares an onboarding form, schedules a Calendly meeting, and notifies the team on Slack — zero manual steps.</p>
           <div class="project-chips">
-            <span class="chip">n8n</span>
-            <span class="chip">HubSpot CRM</span>
-            <span class="chip">Google Drive</span>
-            <span class="chip">Calendly</span>
-            <span class="chip">Slack</span>
+            <span class="chip">n8n</span><span class="chip">HubSpot CRM</span><span class="chip">Google Drive</span><span class="chip">Calendly</span><span class="chip">Slack</span>
           </div>
         </div>
         <div class="project-impact">
@@ -879,23 +704,15 @@ footer span { color: var(--gold); }
       </div>
     </div>
 
-    <!-- Project 3 -->
     <div class="project-card reveal">
       <div class="project-inner">
         <div>
-          <div class="project-meta">
-            <span class="proj-num">03</span>
-            <span class="proj-category">Reporting</span>
-          </div>
+          <div class="project-meta"><span class="proj-num">03</span><span class="proj-category">Reporting</span></div>
           <div class="project-title">Automated Weekly Business Report</div>
           <p class="project-problem">An e-commerce owner spent every Monday pulling data from 5 different tools to build a performance report — 4–5 hours of manual work before the week even started.</p>
           <p class="project-solution">Built a scheduled n8n workflow that pulls data from Shopify, Google Ads, and Google Sheets every Monday at 7am, formats an AI summary using Gemini, and delivers a structured Notion report and Slack digest automatically.</p>
           <div class="project-chips">
-            <span class="chip">n8n</span>
-            <span class="chip">Notion API</span>
-            <span class="chip">Google Sheets</span>
-            <span class="chip">Gemini API</span>
-            <span class="chip">Slack</span>
+            <span class="chip">n8n</span><span class="chip">Notion API</span><span class="chip">Google Sheets</span><span class="chip">Gemini API</span><span class="chip">Slack</span>
           </div>
         </div>
         <div class="project-impact">
@@ -905,23 +722,15 @@ footer span { color: var(--gold); }
       </div>
     </div>
 
-    <!-- Project 4 -->
     <div class="project-card reveal">
       <div class="project-inner">
         <div>
-          <div class="project-meta">
-            <span class="proj-num">04</span>
-            <span class="proj-category">HR Operations</span>
-          </div>
+          <div class="project-meta"><span class="proj-num">04</span><span class="proj-category">HR Operations</span></div>
           <div class="project-title">HR Employee Onboarding Workflow</div>
           <p class="project-problem">An SME HR team relied on manual email chains to onboard new hires — missed IT setups, unsigned policy documents, and chaotic first days were routine.</p>
           <p class="project-solution">Created a multi-step n8n workflow: new hire data triggers IT ticket creation, auto-assigns equipment, sends a welcome email sequence, schedules training sessions in Google Calendar, and tracks everything in an Airtable HR dashboard.</p>
           <div class="project-chips">
-            <span class="chip">n8n</span>
-            <span class="chip">Airtable</span>
-            <span class="chip">Gmail</span>
-            <span class="chip">Google Calendar</span>
-            <span class="chip">Slack</span>
+            <span class="chip">n8n</span><span class="chip">Airtable</span><span class="chip">Gmail</span><span class="chip">Google Calendar</span><span class="chip">Slack</span>
           </div>
         </div>
         <div class="project-impact">
@@ -931,23 +740,15 @@ footer span { color: var(--gold); }
       </div>
     </div>
 
-    <!-- Project 5 -->
     <div class="project-card reveal">
       <div class="project-inner">
         <div>
-          <div class="project-meta">
-            <span class="proj-num">05</span>
-            <span class="proj-category">Customer Support</span>
-          </div>
+          <div class="project-meta"><span class="proj-num">05</span><span class="proj-category">Customer Support</span></div>
           <div class="project-title">AI Customer Support Triage & Ticket Routing</div>
           <p class="project-problem">A SaaS startup's support team had one cluttered inbox — every email was manually read, categorised, and assigned. Response times exceeded 24 hours and team morale was low.</p>
-          <p class="project-solution">Deployed an n8n + Gemini workflow that reads inbound emails, classifies urgency and category (Billing, Bug, Feature, General), auto-replies to simple queries with relevant answers, and creates prioritised HubSpot tickets for complex ones with the right assignee.</p>
+          <p class="project-solution">Deployed an n8n + Gemini workflow that reads inbound emails, classifies urgency and category (Billing, Bug, Feature, General), auto-replies to simple queries, and creates prioritised HubSpot tickets for complex ones with the right assignee.</p>
           <div class="project-chips">
-            <span class="chip">n8n</span>
-            <span class="chip">Gemini API</span>
-            <span class="chip">HubSpot CRM</span>
-            <span class="chip">Gmail</span>
-            <span class="chip">Slack</span>
+            <span class="chip">n8n</span><span class="chip">Gemini API</span><span class="chip">HubSpot CRM</span><span class="chip">Gmail</span><span class="chip">Slack</span>
           </div>
         </div>
         <div class="project-impact">
@@ -966,7 +767,6 @@ footer span { color: var(--gold); }
   <div class="section-eyebrow">How I Work</div>
   <h2>My process</h2>
   <p class="section-sub">From discovery to a live, running automation — here's exactly how I work with clients.</p>
-
   <div class="process-steps">
     <div class="process-step reveal">
       <div class="step-num">01</div>
@@ -981,7 +781,7 @@ footer span { color: var(--gold); }
     <div class="process-step reveal">
       <div class="step-num">03</div>
       <div class="step-title">Build & Test</div>
-      <p class="step-desc">I build and rigorously test the workflow end-to-end, handling edge cases, errors, and making sure everything runs reliably before handover.</p>
+      <p class="step-desc">I build and rigorously test the workflow end-to-end, handling edge cases and errors, making sure everything runs reliably before handover.</p>
     </div>
     <div class="process-step reveal">
       <div class="step-num">04</div>
@@ -1004,7 +804,7 @@ footer span { color: var(--gold); }
     <div class="contact-info">
       <div class="contact-item">
         <span class="contact-item-label">Email</span>
-        <a href="mailto:your@email.com" class="contact-item-val">oladipomubarak2017@gmail.com</a>
+        <a href="mailto:oladipomubarak2017@gmail.com" class="contact-item-val">oladipomubarak2017@gmail.com</a>
       </div>
       <div class="contact-item">
         <span class="contact-item-label">Location</span>
@@ -1025,12 +825,9 @@ footer span { color: var(--gold); }
 </footer>
 
 <script>
-  // Mobile menu
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
-
-  // Close menu on outside click
   document.addEventListener('click', function(e) {
     const menu = document.getElementById('mobileMenu');
     const hamburger = document.querySelector('.hamburger');
@@ -1038,8 +835,6 @@ footer span { color: var(--gold); }
       menu.classList.remove('open');
     }
   });
-
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -1048,7 +843,6 @@ footer span { color: var(--gold); }
       }
     });
   }, { threshold: 0.08 });
-
   reveals.forEach(el => observer.observe(el));
 </script>
 </body>
